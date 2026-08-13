@@ -3,7 +3,7 @@ import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
-class HandDectector:
+class HandDetector:
 
     def __init__(self):
         MODEL_PATH = "hand_landmarker.task"

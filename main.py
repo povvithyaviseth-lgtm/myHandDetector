@@ -1,5 +1,5 @@
 import cv2
-from HandDectector import HandDetector
+from HandDetector import HandDetector
 
 myHandDetector = HandDetector()
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
