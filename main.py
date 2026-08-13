@@ -1,5 +1,7 @@
 import cv2
+from HandDectector import HandDetector
 
+myHandDetector = HandDetector()
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
@@ -9,17 +11,14 @@ if not cap.isOpened():
     print("ERROR: Camera could not be opened.")
     raise SystemExit
 
-cv2.namedWindow("GestureDrive", cv2.WINDOW_NORMAL)
 
-print("Camera started.")
-print("ESC to quit.")
-
-while cap.isOpened():
+while True:
     ret, frame = cap.read()
-
     if not ret:
         print("ERROR: Could not read camera frame.")
         break
+
+    myHandDetector.get_hand_marking(frame)
 
     cv2.imshow("GestureDrive", frame)
 
@@ -29,7 +28,6 @@ while cap.isOpened():
         print("Closing GestureDrive...")
         break
 
+myHandDetector.close()
 cap.release()
 cv2.destroyAllWindows()
-
-print("Program ended.")
